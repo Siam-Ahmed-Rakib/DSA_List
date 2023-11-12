@@ -75,8 +75,20 @@ void ret(int p)
                  largest_index=garrage[i].currPos();
                 value=garrage[i].getValue();
              }
-             garrage[i].moveToPos(largest_index+1);
-             garrage[i].insert(p);
+             if(garrage[i].length()!=largest_index+1)
+                {
+                    garrage[i].moveToPos(largest_index+1);
+                    garrage[i].insert(p);
+                }
+             else
+             {
+                 
+                 garrage[i].moveToEnd();
+                 garrage[i].insert(p);
+                 garrage[i].next();
+                 int d=garrage[i].remove();
+                 garrage[i].insert(d);
+             }
              return;
         }
     }
